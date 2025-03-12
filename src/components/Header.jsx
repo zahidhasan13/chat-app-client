@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import useAuthContext from '../hooks/useAuthContext';
 
 const Header = () => {
-    const {user} = useAuthContext();
+    const {user, dispatch} = useAuthContext();
 
   return (
     <header className="bg-indigo-600 shadow-md">
@@ -24,7 +24,8 @@ const Header = () => {
                   Logged in as: <span className="font-medium">{user.name}</span>
                 </span>
                 <button
-                  className="bg-indigo-700 hover:bg-indigo-800 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                onClick={() => dispatch({type: "LOGOUT"})}
+                  className="bg-indigo-700 hover:bg-indigo-800 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 cursor-pointer"
                 >
                   Log out
                 </button>

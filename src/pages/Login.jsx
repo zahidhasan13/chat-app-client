@@ -1,31 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import useLogin from '../hooks/useLogin';
 
-const Login = ({ onLogin }) => {
+const Login = () => {
+    const {login, isLoading, authError } = useLogin();
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const [isLoading, setIsLoading] = useState(false);
-  const [authError, setAuthError] = useState('');
-  const navigate = useNavigate();
+  
 
   const onSubmit = async (data) => {
-    setIsLoading(true);
-    setAuthError('');
+    const {email, password} = data;
+
+    await login(email,password);
     
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // This is where you'd normally make your actual authentication request
-      // For demo purposes, we'll just simulate a successful login
-      const user = { name: data.email.split('@')[0], email: data.email };
-      onLogin(user);
-      navigate('/');
-    } catch (error) {
-      setAuthError('Invalid email or password. Please try again.', error);
-    } finally {
-      setIsLoading(false);
-    }
   };
 
   return (
