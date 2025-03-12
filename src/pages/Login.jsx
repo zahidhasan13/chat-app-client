@@ -22,7 +22,7 @@ const Login = ({ onLogin }) => {
       onLogin(user);
       navigate('/');
     } catch (error) {
-      setAuthError('Invalid email or password. Please try again.');
+      setAuthError('Invalid email or password. Please try again.', error);
     } finally {
       setIsLoading(false);
     }
