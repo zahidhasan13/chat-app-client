@@ -4,6 +4,9 @@ import ChatBox from "../pages/ChatBox";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import NotFound from "../pages/NotFound";
+import PrivateRoute from "./PrivateRoute";
+
+
 
 const router = createBrowserRouter([
     {
@@ -12,7 +15,7 @@ const router = createBrowserRouter([
       children:[
         {
             path: "/",
-            element: <ChatBox/>
+            element: <PrivateRoute><ChatBox/></PrivateRoute>
         }
       ]
     },

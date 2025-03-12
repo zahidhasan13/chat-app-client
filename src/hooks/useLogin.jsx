@@ -22,7 +22,6 @@ const useLogin = () => {
         })
 
         const data = await res.json();
-        console.log(data);
 
         if(!res.ok){
             setIsLoading(false);

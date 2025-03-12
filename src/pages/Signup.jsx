@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import useSignup from "../hooks/useSignup";
 
 const Signup = () => {
+    console.log("signup");
     const{signup, isLoading, signupError} = useSignup();
   const {
     register,

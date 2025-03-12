@@ -5,6 +5,11 @@ import useAuthContext from '../hooks/useAuthContext';
 const Header = () => {
     const {user, dispatch} = useAuthContext();
 
+    const handleLogout = () => {
+      dispatch({ type: "LOGOUT" });
+      localStorage.removeItem("user");
+    };
+
   return (
     <header className="bg-indigo-600 shadow-md">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,7 +29,7 @@ const Header = () => {
                   Logged in as: <span className="font-medium">{user.name}</span>
                 </span>
                 <button
-                onClick={() => dispatch({type: "LOGOUT"})}
+                onClick={handleLogout}
                   className="bg-indigo-700 hover:bg-indigo-800 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 cursor-pointer"
                 >
                   Log out
