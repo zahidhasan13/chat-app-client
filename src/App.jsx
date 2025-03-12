@@ -7,7 +7,9 @@ const App = () => {
   return (
     <div>
       <Header/>
+      <div className='container mx-auto px-4 sm:px-6 lg:px-8 min-h-screen'>
       <Outlet/>
+      </div>
       <Footer/>
     </div>
   );
